@@ -13,7 +13,7 @@ Zoo management project for Advanced computer programming subject using java.
 ## Team Members
 * Yahya Mewan Hassan
 * Majeed Omer Majeed
-* Mohammed Hassan Rsul
+* Mohammed Hassan Rasul
 
 
 
