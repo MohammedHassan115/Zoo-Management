@@ -1,4 +1,4 @@
-# Zoo-Management_System
+# Zoo-Management-System
 Zoo management project for Advanced computer programming subject using java.
 ## Requrements and Features
 * Add/Edit/Update/view employee details.
