@@ -14,7 +14,7 @@ public final class Penguin extends Bird
 	//utilities
 	public void display()
 	{
-		System.out.println("%s is a penguin who can swim %d m/s.\n", name, swimmingSpeed);
+		System.out.printf("%s is a penguin who can swim %d m/s.\n", name, swimmingSpeed);
 	}
 	
 	public int getSwimmingSpeed() 
