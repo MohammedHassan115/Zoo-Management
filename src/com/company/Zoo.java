@@ -31,21 +31,21 @@ public class Zoo {
 
         switch(species) {
             case "penguin":
-                System.out.println("How fast does %s swim? (i.e. 40): ", name);
+                System.out.printf("How fast does %s swim? (i.e. 40): ", name);
                 int speed = Integer.parseInt(scan.next());
                 this.animals.add(new Penguin(name, speed));
                 speciesCounts.put("Penguin", speciesCounts.get("Penguin") + 1);
                 break;
             default:
-                System.out.println("We don't have %ss in this zoo!\n", name);
+                System.out.printf("We don't have %ss in this zoo!\n", name);
         }
     }
     public void display_summary() {
         System.out.println("summary:");
-        System.out.println("There are %d animals in the zoo.\n", this.animals.size());
+        System.out.printf("There are %d animals in the zoo.\n", this.animals.size());
 
         for(Map.Entry<String, Integer> set : this.speciesCounts.entrySet())
-            System.out.println("%d %s(s)\n", set.getValue(), set.getKey());
+            System.out.printf("%d %s(s)\n", set.getValue(), set.getKey());
         System.out.println();
 
     }
@@ -54,7 +54,7 @@ public class Zoo {
         System.out.println("     Name     Species");
         int index = 1;
         for(Animal a : animals) {
-            System.out.println("%-2d: %-8s %-8s\n", index, a.name, a.species);
+            System.out.printf("%-2d: %-8s %-8s\n", index, a.name, a.species);
             index++;
         }
         System.out.println();
@@ -82,9 +82,9 @@ public class Zoo {
                 deleted = true;
             }
             if(deleted)
-                System.out.println("Removed %s from the zoo!\n", name);
+                System.out.printf("Removed %s from the zoo!\n", name);
             else
-                System.out.println("Couldn't find %s in the zoo!\n", name);
+                System.out.printf("Couldn't find %s in the zoo!\n", name);
         }
     }
     private boolean has_animal(String name) {
@@ -103,7 +103,7 @@ public class Zoo {
                     return animal;
         }
 
-        System.out.println("We can not find %s in the zoo!\n", name);
+        System.out.printf("We can not find %s in the zoo!\n", name);
         return new Penguin("Error", 0);
     }
 }
