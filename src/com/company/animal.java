@@ -1,7 +1,7 @@
 package m;
 
 public class animal {
-    public static void add() {
+    public static void add(String name) {
 		
 	}
     public static void Delete(String s) {
