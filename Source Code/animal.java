@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class animal {
     static Scanner s = new Scanner(System.in);
-    static List<String> animals = new ArrayList<>();
+    static LinkedList<String> animals = new LinkedList<>();
     static List<String> informations = new ArrayList<>();
     static String name  = "";
     static String nameR  = "";
