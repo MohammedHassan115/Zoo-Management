@@ -2,7 +2,7 @@ package m;
 import java.util.Scanner;
 
 public class Zoo {
-	static String email = "";
+	static String username = "";
 	static String password = "";
     public static void main(String args[]) {
     	EP();
@@ -35,8 +35,8 @@ public class Zoo {
 	public static void EP(){
 		Scanner s = new Scanner(System.in);
 		System.out.println("Please enter email and password:");
-    	System.out.print("Email: ");
-    	email = s.nextLine();
+    	System.out.print("Username: ");
+    	username = s.nextLine();
     	System.out.print("Password: ");
     	password = s.nextLine();
     	System.out.println();
@@ -48,13 +48,14 @@ public class Zoo {
     	ticket t = new ticket();
     	login l = new login();
     	String actions = "";
-    	if(email.equals("muhamad23@gmail.com") && password.equals("12345!@#$%")) {
+    	if(username.equals("mohammed123") && password.equals("12345!@#$%")) {
+    		System.out.println("Hello manager");
     		while(!actions.equals("exit")) {
         		display_options1();
         		System.out.println("Select an action: ");
                 actions = s.next().toLowerCase();
                 System.out.println();    
-        	switch(actions){
+        switch(actions){
         	case "animal":
                 a.managerActions();
             break;
@@ -71,7 +72,7 @@ public class Zoo {
                 ex.managerActions();
             break;
         	case "ticket":
-                t.publicActions();
+                t.managerActions();
             break;
         	case "back":
                 EP();
@@ -85,17 +86,18 @@ public class Zoo {
         }
     	}
         else {
+        	System.out.println("Hello user");
         	while(!actions.equals("exit")) {
     		display_options2();
     		System.out.println("Select an action: ");
             actions = s.next().toLowerCase();
             System.out.println();    
-            switch(actions){
+           switch(actions){
             case "animal":
             a.userActions();
             break;
             case "ticket":
-            t.publicActions();
+            t.userActions();
             break;
             case "back":
                 EP();
