@@ -5,7 +5,7 @@ public class Zoo {
 	static String username = "";
 	static String password = "";
     public static void main(String args[]) {
-    	EP();
+    	PU();
     }
     	
 	public static void display_options1(){
@@ -16,7 +16,7 @@ public class Zoo {
         System.out.println("4- income - show you list of sub actions with income");
         System.out.println("4- expenditure - show you list of sub actions with expenditure");
         System.out.println("5- ticket - show list of sub actions with tickets");
-        System.out.println("6- back - back to email and password please");
+        System.out.println("6- back - back to username and password place");
 
         System.out.println("--");
         System.out.println("options - display this options message");
@@ -26,15 +26,15 @@ public class Zoo {
         System.out.println("Options:");
         System.out.println("1- animal - show you list of sub actions with animals");
         System.out.println("2- ticket - show list of sub actions with tickets");
-        System.out.println("3- back - back to email and password please");
+        System.out.println("3- back - back to username and password place");
 
         System.out.println("--");
         System.out.println("options - display this options message");
         System.out.println("exit - exit the program\n");
     }
-	public static void EP(){
+	public static void PU(){
 		Scanner s = new Scanner(System.in);
-		System.out.println("Please enter email and password:");
+		System.out.println("Please enter username and password:");
     	System.out.print("Username: ");
     	username = s.nextLine();
     	System.out.print("Password: ");
@@ -49,13 +49,13 @@ public class Zoo {
     	login l = new login();
     	String actions = "";
     	if(username.equals("mohammed123") && password.equals("12345!@#$%")) {
-    		System.out.println("Hello manager");
+    		System.out.println("Hello manager\n");
     		while(!actions.equals("exit")) {
         		display_options1();
         		System.out.println("Select an action: ");
                 actions = s.next().toLowerCase();
                 System.out.println();    
-        switch(actions){
+        	switch(actions){
         	case "animal":
                 a.managerActions();
             break;
@@ -75,7 +75,7 @@ public class Zoo {
                 t.managerActions();
             break;
         	case "back":
-                EP();
+                PU();
             break;
         	case "exit":
                 System.exit(0);
@@ -86,13 +86,13 @@ public class Zoo {
         }
     	}
         else {
-        	System.out.println("Hello user");
+        	System.out.println("Hello user\n");
         	while(!actions.equals("exit")) {
     		display_options2();
     		System.out.println("Select an action: ");
             actions = s.next().toLowerCase();
             System.out.println();    
-           switch(actions){
+            switch(actions){
             case "animal":
             a.userActions();
             break;
@@ -100,7 +100,7 @@ public class Zoo {
             t.userActions();
             break;
             case "back":
-                EP();
+                PU();
             break;
             case "exit":
                 System.exit(0);
