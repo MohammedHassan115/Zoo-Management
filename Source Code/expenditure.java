@@ -27,6 +27,6 @@ public class expenditure {
 		price = 0;
 	}
     public static void viewX() {
-		System.out.println("The expenditure is: " + price + "\n");
+		System.out.println("The expenditure is: " + price + "$ \n");
 	}
 }
