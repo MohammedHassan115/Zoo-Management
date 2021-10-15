@@ -1,5 +1,7 @@
 package m;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -10,12 +12,16 @@ public class supply {
 	static String name  = "";
 	static String nameR  = "";
 	static int price = 0;
-	public static void managerActions() {
+	public static void managerActions() throws IOException {
+		FileWriter fw = new FileWriter("supply.txt", true);
     	System.out.println("What you want to do with supplies:\n* add\n* delete\n* update\n* view");
     	String chooseS = s.nextLine();
     	if(chooseS.equals("add")) {
     		System.out.print("Please enter name of the supply: ");
     		name = s.nextLine().toLowerCase();
+    		for(int i=0; i<name.length(); i++)
+    			fw.write(name.charAt(i));
+    		fw.write("\n");
     		System.out.print("And enter price of the supply: ");
     		price = s.nextInt();
     		addS(name, price);
@@ -35,7 +41,7 @@ public class supply {
     	}else {
     		System.out.println("We don't have this action in list of actions\n");
     	}
-    		
+    	fw.close();		
     }
     public static void addS(String n, int p) {
     	if(!supplies.contains(n)) {
