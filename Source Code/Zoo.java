@@ -1,10 +1,11 @@
 package m;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Zoo {
 	static String username = "";
 	static String password = "";
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
     	PU();
     }
     	
@@ -32,7 +33,7 @@ public class Zoo {
         System.out.println("options - display this options message");
         System.out.println("exit - exit the program\n");
     }
-	public static void PU(){
+	public static void PU() throws IOException{
 		Scanner s = new Scanner(System.in);
 		System.out.println("Please enter username and password:");
     	System.out.print("Username: ");
