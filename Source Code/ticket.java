@@ -51,7 +51,7 @@ public class ticket {
     		i.updateI(pt);
     	}
     	else {
-    		System.out.println("Please choose one of the ticket and give enough money\n");
+    		System.out.println("Please choose one of the ticket and give enough money (Normal or VIP)\n");
     		showT();
     	}
     	
