@@ -1,5 +1,7 @@
 package m;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,12 +28,16 @@ public class animal {
     		System.out.println("We don't have this action in list of actions");
     	}
     }
-	public static void managerActions() {
+	public static void managerActions() throws IOException {
+		FileWriter fw = new FileWriter("animal.txt", true);
     	System.out.println("What you want to do with animals:\n* add\n* delete\n* update\n* view\n* information");
     	String chooseA = s.nextLine();
     	if(chooseA.equals("add")) {
     		System.out.print("Please enter name of the animal: ");
     		name = s.nextLine().toLowerCase();
+    		for(int i=0; i<name.length(); i++)
+    			fw.write(name.charAt(i));
+    		fw.write("\n");
     		System.out.print("And enter information about the animal: ");
     		informationA = s.nextLine().toLowerCase();
     		addA(name, informationA);
@@ -47,12 +53,14 @@ public class animal {
     		updateA(name, nameR);
     	}else if(chooseA.equals("view")) {
     		viewA();
-    	}
-    	else if(chooseA.equals("information")) {
+    	}else if(chooseA.equals("information")) {
     		System.out.print("Please enter name of the animal to find information about it: ");
     		name = s.nextLine().toLowerCase();
     		informationA(name);
+    	}else {
+    		System.out.println("We don't have this action in list of actions\n");
     	}
+    	fw.close();
     }
     public static void addA(String n, String i) {
     	if(!animals.contains(n)) {
@@ -64,8 +72,8 @@ public class animal {
     	}
     }
     public static void deleteA(String n) {
-    	animals.remove(animals.indexOf(n));
     	informations.remove(animals.indexOf(n));
+    	animals.remove(animals.indexOf(n));
     	System.out.println(n + " removed from the list of animals\n");	
     }
     public static void updateA(String n, String nR) {
