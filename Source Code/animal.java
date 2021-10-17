@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-
+//here
 public class animal {
 	static Scanner s = new Scanner(System.in);
 	static LinkedList<String> animals = new LinkedList<>();
@@ -40,6 +40,9 @@ public class animal {
     		fw.write("\n");
     		System.out.print("And enter information about the animal: ");
     		informationA = s.nextLine().toLowerCase();
+    		for(int i=0; i<informationA.length(); i++)
+    			fw.write(informationA.charAt(i));
+    		fw.write("\n\n");
     		addA(name, informationA);
     	} else if(chooseA.equals("delete")) {
     		System.out.print("Please enter name of the animal: ");
