@@ -26,6 +26,9 @@ public class employee {
     		fw.write("\n");
     		System.out.print("And enter information about the emloyee: ");
     		informationE = s.nextLine().toLowerCase();
+    		for(int i=0; i<informationE.length(); i++)
+    			fw.write(informationE.charAt(i));
+    		fw.write("\n\n");
     		addE(name, informationE);
     	} else if(chooseE.equals("delete")) {
     		System.out.print("Please enter name of the employee: ");
