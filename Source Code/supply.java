@@ -20,7 +20,7 @@ public class supply {
 	public static void managerActions() throws IOException {
 		FileWriter fw = new FileWriter("supply.txt", true);
     	System.out.println("What you want to do with supplies:\n* add\n* delete\n* update\n* view");
-    	String chooseS = s.nextLine();
+    	String chooseS = s.nextLine().toLowerCase();
     	if(chooseS.equals("add")) {
     		System.out.print("Please enter name of the supply: ");
     		name = s.nextLine().toLowerCase();
