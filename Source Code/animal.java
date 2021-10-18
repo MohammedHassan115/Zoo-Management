@@ -17,7 +17,7 @@ public class animal {
 	static String informationA = "";
 	public static void userActions() {
     	System.out.println("What you want to do with animals:\n* information\n* view");
-    	String chooseA = s.nextLine();
+    	String chooseA = s.nextLine().toLowerCase();
     	if(chooseA.equals("information")) {
     		System.out.print("Please enter name of the animal to find information about it: ");
     		name = s.nextLine().toLowerCase();
@@ -31,7 +31,7 @@ public class animal {
 	public static void managerActions() throws IOException {
 		FileWriter fw = new FileWriter("animal.txt", true);
     	System.out.println("What you want to do with animals:\n* add\n* delete\n* update\n* view\n* information");
-    	String chooseA = s.nextLine();
+    	String chooseA = s.nextLine().toLowerCase();
     	if(chooseA.equals("add")) {
     		System.out.print("Please enter name of the animal: ");
     		name = s.nextLine().toLowerCase();
