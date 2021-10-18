@@ -12,7 +12,7 @@ public class ticket {
 	static int ticketsoldA = 0;
 	public static void managerActions() {
 		System.out.println("What you want to do with tickets:\n* show\n* sold tickets");
-		String chooseT = s.nextLine();
+		String chooseT = s.nextLine().toLowerCase();
     	if(chooseT.equals("show")) {
     		showT();
     	} else if(chooseT.equals("sold tickets")) {
@@ -23,7 +23,7 @@ public class ticket {
 	}
 	public static void userActions() {
 		System.out.println("What you want to do with tickets:\n* show\n* buy");
-		String chooseT = s.nextLine();
+		String chooseT = s.nextLine().toLowerCase();
     	if(chooseT.equals("show")) {
     		showT();
     	} else if(chooseT.equals("buy")) {
@@ -51,7 +51,7 @@ public class ticket {
     		i.updateI(pt);
     	}
     	else {
-    		System.out.println("Please choose one of the ticket and give enough money (Normal or VIP)\n");
+    		System.out.println("Please choose one of the ticket and give enough money\n");
     		showT();
     	}
     	
