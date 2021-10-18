@@ -17,7 +17,7 @@ public class employee {
 	public static void managerActions() throws IOException {
 		FileWriter fw = new FileWriter("employee.txt", true);
     	System.out.println("What you want to do with employees:\n* add\n* delete\n* update\n* view\n* information");
-    	String chooseE = s.nextLine();
+    	String chooseE = s.nextLine().toLowerCase();
     	if(chooseE.equals("add")) {
     		System.out.print("Please enter name of the employee: ");
     		name = s.nextLine().toLowerCase();
