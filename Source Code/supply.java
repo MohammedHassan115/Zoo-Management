@@ -6,13 +6,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-//add quantity to supply && update -
-//edit expenditure
 
 public class supply {
 	static Scanner s = new Scanner(System.in);
 	static LinkedList<String> supplies = new LinkedList<>();
 	static List<String> quantityS = new ArrayList<>();
+	static List<Integer> priceS = new ArrayList<>();
 	static expenditure ex = new expenditure();
 	static String name  = "";
 	static String nameR  = "";
@@ -39,7 +38,6 @@ public class supply {
     			fw.write(String.valueOf(p).charAt(i));
     		fw.write("\n\n");
     		addS(name, quantity, p);
-    		ex.updateX(p);
     	} else if(chooseS.equals("delete")) {
     		System.out.print("Please enter name of the supply: ");
     		name = s.nextLine().toLowerCase();
@@ -61,13 +59,17 @@ public class supply {
     	if(!supplies.contains(n)) {
     		supplies.add(n);
     		quantityS.add(q);
+    		priceS.add(p);
         	System.out.println(q + " of " + n + " by " + p + "$ added to the list of supplies\n");
+        	ex.increaseX(p);
     	}else {
     		System.out.println("This name already exist in the list of supplies\n");
     	}
     }
     public static void deleteS(String n) {
     	quantityS.remove(supplies.indexOf(n));
+    	ex.decreaseX(priceS.get(supplies.indexOf(n)));
+    	priceS.remove(supplies.indexOf(n));
     	supplies.remove(supplies.indexOf(n));
     	System.out.println(n + " removed from the list of supplies\n");	
     }
