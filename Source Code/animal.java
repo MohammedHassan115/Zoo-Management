@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-//here
+
 public class animal {
 	static Scanner s = new Scanner(System.in);
 	static LinkedList<String> animals = new LinkedList<>();
