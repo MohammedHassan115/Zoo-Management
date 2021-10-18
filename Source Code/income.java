@@ -7,7 +7,7 @@ public class income {
 	static int price = 0;
 	public static void managerActions() {
 		System.out.println("What you want to do with incomes:\n* update\n* clear\n* view");
-		String chooseI = s.nextLine();
+		String chooseI = s.nextLine().toLowerCase();
     	if(chooseI.equals("update")) {
     		System.out.print("Please enter the new income: ");
     		price = s.nextInt();
