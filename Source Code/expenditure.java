@@ -6,7 +6,7 @@ public class expenditure {
 	static int price1 = 0;
 	static int price2 = 0;
 	public static void managerActions() {
-		System.out.println("What you want to do with expenditures:\n* increase\n* decrease\n* clear\n* view");
+		System.out.println("What you want to do with expenditures:\n* increase - you can increase expenditure with it\n* decrease - you can decrease expenditure with it\n* clear - expenditure will be (0)\n* view - show you how many expenditure we have");
 		String chooseX = s.nextLine().toLowerCase();
     	if(chooseX.equals("increase")) {
     		System.out.print("Please enter the increased expenditure: ");
