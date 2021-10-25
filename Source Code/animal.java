@@ -1,5 +1,9 @@
 package m;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,35 +19,35 @@ public class animal {
 	static String nameR  = "";
 	static String chooseA = "";
 	static String informationA = "";
-	public static void userActions() {
-    	System.out.println("What you want to do with animals:\n* information\n* view");
+	public static void userActions() throws IOException {
+    	System.out.println("What you want to do with animals:\n* view - show list of animals\n* search - to find a specfic animal");
     	String chooseA = s.nextLine().toLowerCase();
-    	if(chooseA.equals("information")) {
-    		System.out.print("Please enter name of the animal to find information about it: ");
-    		name = s.nextLine().toLowerCase();
-    		informationA(name);
-    	}else if(chooseA.equals("view")) {
+    	if(chooseA.equals("view")) {
     		viewA();
+    	}else if(chooseA.equals("search")) {
+    		System.out.print("Please enter name of the animal to find it: ");
+    		name = s.nextLine().toLowerCase();
+    		searchA(name);
     	}else {
     		System.out.println("We don't have this action in list of actions");
     	}
     }
 	public static void managerActions() throws IOException {
 		FileWriter fw = new FileWriter("animal.txt", true);
-    	System.out.println("What you want to do with animals:\n* add\n* delete\n* update\n* view\n* information");
+    	System.out.println("What you want to do with animals:\n* add - add an animal to list of animals\n* delete - remove an animal to list of animals\n* update  - replace an animal with another animal in list of animals\n* view - show list of animals\n* search - to find a specfic animal");
     	String chooseA = s.nextLine().toLowerCase();
     	if(chooseA.equals("add")) {
     		System.out.print("Please enter name of the animal: ");
     		name = s.nextLine().toLowerCase();
+    		System.out.print("And enter information about the animal: ");
+    		informationA = s.nextLine().toLowerCase();
+    		addA(name, informationA);
     		for(int i=0; i<name.length(); i++)
     			fw.write(name.charAt(i));
     		fw.write("\n");
-    		System.out.print("And enter information about the animal: ");
-    		informationA = s.nextLine().toLowerCase();
     		for(int i=0; i<informationA.length(); i++)
     			fw.write(informationA.charAt(i));
     		fw.write("\n\n");
-    		addA(name, informationA);
     	} else if(chooseA.equals("delete")) {
     		System.out.print("Please enter name of the animal: ");
     		name = s.nextLine().toLowerCase();
@@ -56,10 +60,10 @@ public class animal {
     		updateA(name, nameR);
     	}else if(chooseA.equals("view")) {
     		viewA();
-    	}else if(chooseA.equals("information")) {
-    		System.out.print("Please enter name of the animal to find information about it: ");
+    	}else if(chooseA.equals("search")) {
+    		System.out.print("Please enter name of the animal to find it: ");
     		name = s.nextLine().toLowerCase();
-    		informationA(name);
+    		searchA(name);
     	}else {
     		System.out.println("We don't have this action in list of actions\n");
     	}
@@ -83,19 +87,51 @@ public class animal {
     	animals.set(animals.indexOf(n), nR);
     	System.out.println(n + " replace by " + nR + "\n");	
     }
-    public static void viewA() {
+    public static void viewA() throws IOException {
+    	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\animal.txt");
+		BufferedReader br = new BufferedReader(new FileReader(f));
+		String st;
+		int s = 0;
+		while((st = br.readLine()) != null){
+			if(!st.equals("")) {
+			if(s==0) {
+				animals.add(st);
+				s = 1;
+			}else {
+				informations.add(st);
+				s = 0;
+			}
+			}
+		}
     	int j = 0;
-    	System.out.println("List of aimals:");
+    	System.out.println("List of animals:");
     	for(int i=0; i<animals.size(); i++) {
-    		j = i;
-    		j++;
-    		System.out.println(j + "- " + animals.get(i));
+    		if(!animals.get(i).equals("")) {
+    			j = i;
+    		    j++;
+    		    System.out.println(j + "- " + animals.get(i) + " " + informations.get(i));
+    		}
     	}
     	System.out.println();
     }
-    public static void informationA(String n) {
+    public static void searchA(String n) throws IOException {
+    	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\animal.txt");
+		BufferedReader br = new BufferedReader(new FileReader(f));
+		String st;
+		int s = 0;
+		while((st = br.readLine()) != null){
+			if(!st.equals("")) {
+			if(s==0) {
+				animals.add(st);
+				s = 1;
+			}else {
+				informations.add(st);
+				s = 0;
+			}
+			}
+		}
     	if(animals.contains(n)) {
-    		System.out.println(informations.get(animals.indexOf(n)));
+    		System.out.println(animals.get(animals.indexOf(n)) + " " +informations.get(animals.indexOf(n)));
     	}else {
     		System.out.println("We don't have this animal in list of animals\n");
     	}
