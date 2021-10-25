@@ -1,5 +1,9 @@
 package m;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +20,7 @@ public class employee {
 	static String informationE = "";
 	public static void managerActions() throws IOException {
 		FileWriter fw = new FileWriter("employee.txt", true);
-    	System.out.println("What you want to do with employees:\n* add\n* delete\n* update\n* view\n* information");
+    	System.out.println("What you want to do with employees:\n* add - add an employee to list of employees\n* delete - remove an employee to list of employees\n* update  - replace an employee with another employee in list of employees\n* view - show list of employees\n* search - to find a specific employee");
     	String chooseE = s.nextLine().toLowerCase();
     	if(chooseE.equals("add")) {
     		System.out.print("Please enter name of the employee: ");
@@ -43,10 +47,10 @@ public class employee {
     	}else if(chooseE.equals("view")) {
     		viewE();
     	}
-    	else if(chooseE.equals("information")) {
+    	else if(chooseE.equals("search")) {
     		System.out.print("Please enter name of the animal to find information about it: ");
     		name = s.nextLine().toLowerCase();
-    		informationE(name);
+    		searchE(name);
     	}
     	else {
     		System.out.println("We don't have this action in list of actions\n");
@@ -71,19 +75,53 @@ public class employee {
     	employees.set(employees.indexOf(n), nR);
     	System.out.println(n + " replaced by " + nR + "\n");	
     }
-    public static void viewE() {
+    public static void viewE() throws IOException {
+    	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\employee.txt");
+		BufferedReader br = new BufferedReader(new FileReader(f));
+		String st;
+		int s = 0;
+		while((st = br.readLine()) != null){
+			if(!st.equals("")) {
+			if(s==0) {
+				employees.add(st);
+				s = 1;
+			}else {
+				informations.add(st);
+				s = 0;
+			}
+			}
+			
+		}
     	int j = 0;
     	System.out.println("List of employees:");
     	for(int i=0; i<employees.size(); i++) {
-    		j = i;
-    		j++;
-    		System.out.println(j + "- " + employees.get(i));
+    		if(!employees.get(i).equals("")) {
+    			j = i;
+    		    j++;
+    		    System.out.println(j + "- " + employees.get(i) + " " + informations.get(i));
+    		}
     	}
     	System.out.println();
     }
-    public static void informationE(String n) {
+    public static void searchE(String n) throws IOException {
+    	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\employee.txt");
+		BufferedReader br = new BufferedReader(new FileReader(f));
+		String st;
+		int s = 0;
+		while((st = br.readLine()) != null){
+			if(!st.equals("")) {
+			if(s==0) {
+				employees.add(st);
+				s = 1;
+			}else {
+				informations.add(st);
+				s = 0;
+			}
+			}
+			
+		}
     	if(employees.contains(n)) {
-    		System.out.println(informations.get(employees.indexOf(n)));
+    		System.out.println(employees.get(employees.indexOf(n)) + " " + informations.get(employees.indexOf(n)));
     	}else {
     		System.out.println("We don't have this employee in list of employees\n");
     	}
