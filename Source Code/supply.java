@@ -1,5 +1,8 @@
 package m;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +22,7 @@ public class supply {
 	static int p = 0;
 	public static void managerActions() throws IOException {
 		FileWriter fw = new FileWriter("supply.txt", true);
-    	System.out.println("What you want to do with supplies:\n* add\n* delete\n* update\n* view");
+    	System.out.println("What you want to do with supplies:\n* add - add an supply to list of supplies\n* delete - remove an supply to list of supplies\n* update  - replace an supplies with another supplies in list of supplies\n* view - show list of supplies\n* search - to find a specific supply");
     	String chooseS = s.nextLine().toLowerCase();
     	if(chooseS.equals("add")) {
     		System.out.print("Please enter name of the supply: ");
@@ -50,6 +53,10 @@ public class supply {
     		updateS(name, nameR);
     	}else if(chooseS.equals("view")) {
     		viewS();
+    	}else if(chooseS.equals("search")) {
+    		System.out.print("Please enter name of the supply to find it: ");
+    		name = s.nextLine().toLowerCase();
+    		searchS(name);
     	}else {
     		System.out.println("We don't have this action in list of actions\n");
     	}
@@ -77,14 +84,57 @@ public class supply {
     	supplies.set(supplies.indexOf(n), nR);
     	System.out.println(nR + " replaced by " + n + "\n");	
     }
-    public static void viewS() {
+    public static void viewS() throws IOException {
+    	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\supply.txt");
+		BufferedReader br = new BufferedReader(new FileReader(f));
+		String st;
+		int s = 0;
+		while((st = br.readLine()) != null){
+			if(!st.equals("")) {
+			if(s==0) {
+				supplies.add(st);
+				s = 1;
+			}else if(s==1){
+				quantityS.add(st);
+				s = 2;
+			}else {
+				priceS.add(Integer.parseInt(st));
+				s = 0;
+			}
+			}
+		}
     	int j = 0;
     	System.out.println("List of supplies:");
     	for(int i=0; i<supplies.size(); i++) {
     		j = i;
     		j++;
-    		System.out.println(j + "- " + supplies.get(i));
+    		System.out.println(j + "- " + quantityS.get(i) + " of " + supplies.get(i) + " by " + priceS.get(i) +"$");
     	}
     	System.out.println();
+    }
+    public static void searchS(String n) throws IOException {
+    	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\supply.txt");
+		BufferedReader br = new BufferedReader(new FileReader(f));
+		String st;
+		int s = 0;
+		while((st = br.readLine()) != null){
+			if(!st.equals("")) {
+			if(s==0) {
+				supplies.add(st);
+				s = 1;
+			}else if(s==1){
+				quantityS.add(st);
+				s = 2;
+			}else {
+				priceS.add(Integer.parseInt(st));
+				s = 0;
+			}
+			}
+		}
+    	if(supplies.contains(n)) {
+    		System.out.println(quantityS.get(supplies.indexOf(n)) + " of " + supplies.get(supplies.indexOf(n)) + " by " + priceS.get(supplies.lastIndexOf(n)) +"$");
+    	}else {
+    		System.out.println("We don't have this employee in list of employees\n");
+    	}
     }
  }
