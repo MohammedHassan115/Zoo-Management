@@ -27,6 +27,6 @@ public class income {
 		price = 0;
 	}
     public static void viewI() {
-		System.out.println("The income is: " + price + "\n");
+		System.out.println("The income is: " + price + "$\n");
 	}
 }
