@@ -11,7 +11,7 @@ public class ticket {
 	static int ticketsoldV = 0;
 	static int ticketsoldA = 0;
 	public static void managerActions() {
-		System.out.println("What you want to do with tickets:\n* show\n* sold tickets");
+		System.out.println("What you want to do with tickets:\n* show - show you what ticket we have\n* sold tickets - show you number and type of tickets that sold");
 		String chooseT = s.nextLine().toLowerCase();
     	if(chooseT.equals("show")) {
     		showT();
@@ -22,7 +22,7 @@ public class ticket {
     	}
 	}
 	public static void userActions() {
-		System.out.println("What you want to do with tickets:\n* show\n* buy");
+		System.out.println("What you want to do with tickets:\n* show - show you what ticket we have\n* buy - you can buy a ticket");
 		String chooseT = s.nextLine().toLowerCase();
     	if(chooseT.equals("show")) {
     		showT();
