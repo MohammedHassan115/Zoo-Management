@@ -22,7 +22,7 @@ public class supply {
 	static int p = 0;
 	public static void managerActions() throws IOException {
 		FileWriter fw = new FileWriter("supply.txt", true);
-    	System.out.println("What you want to do with supplies:\n* add - add an supply to list of supplies\n* delete - remove an supply to list of supplies\n* update  - replace an supplies with another supplies in list of supplies\n* view - show list of supplies\n* search - to find a specific supply");
+    	System.out.println("What you want to do with supplies:\n* add - add an supply to list of supplies\n* delete - remove an supply from list of supplies\n* update  - replace an supplies with another supplies in list of supplies\n* view - show list of supplies\n* search - to find a specific supply");
     	String chooseS = s.nextLine().toLowerCase();
     	if(chooseS.equals("add")) {
     		System.out.print("Please enter name of the supply: ");
