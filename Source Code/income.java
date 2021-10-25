@@ -6,7 +6,7 @@ public class income {
 	static Scanner s = new Scanner(System.in);
 	static int price = 0;
 	public static void managerActions() {
-		System.out.println("What you want to do with incomes:\n* update\n* clear\n* view");
+		System.out.println("What you want to do with incomes:\n* update - update your income\n* clear - income will be (0)\n* view - show you how many income we have");
 		String chooseI = s.nextLine().toLowerCase();
     	if(chooseI.equals("update")) {
     		System.out.print("Please enter the new income: ");
@@ -27,6 +27,6 @@ public class income {
 		price = 0;
 	}
     public static void viewI() {
-		System.out.println("The income is: " + price + "$\n");
+		System.out.println("The income is: " + price + "\n");
 	}
 }
