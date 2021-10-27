@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class employee {
+	static view v = new view();
 	static Scanner s = new Scanner(System.in);
 	static LinkedList<String> employees = new LinkedList<>();
 	static List<String> informations = new ArrayList<>();
@@ -20,7 +21,7 @@ public class employee {
 	static String informationE = "";
 	public static void managerActions() throws IOException {
 		FileWriter fw = new FileWriter("employee.txt", true);
-    	System.out.println("What you want to do with employees:\n* add - add an employee to list of employees\n* delete - remove an employee to list of employees\n* update  - replace an employee with another employee in list of employees\n* view - show list of employees\n* search - to find a specific employee");
+    	System.out.println("What you want to do with employees:\n* add - add an employee to list of employees\n* delete - remove an employee to list of employees\n* update  - replace an employee with another employee in list of employees\n* view - show list of employees\n* search - to find a specific employee\n* back - back to list of actions");
     	String chooseE = s.nextLine().toLowerCase();
     	if(chooseE.equals("add")) {
     		System.out.print("Please enter name of the employee: ");
@@ -46,18 +47,19 @@ public class employee {
     		updateE(name, nameR);
     	}else if(chooseE.equals("view")) {
     		viewE();
-    	}
-    	else if(chooseE.equals("search")) {
+    	}else if(chooseE.equals("search")) {
     		System.out.print("Please enter name of the animal to find information about it: ");
     		name = s.nextLine().toLowerCase();
     		searchE(name);
-    	}
-    	else {
+    	}else if(chooseE.equals("back")) {
+    		
+    	}else {
     		System.out.println("We don't have this action in list of actions\n");
+    		managerActions();
     	}
     	fw.close();	
     }
-    public static void addE(String n, String i) {
+    public static void addE(String n, String i) throws IOException {
     	if(!employees.contains(n)) {
     		employees.add(n);
     		informations.add(i);
@@ -65,15 +67,18 @@ public class employee {
     	}else {
     		System.out.println("This name already exist in the list of employees");
     	}
+    	managerActions();
     }
-    public static void deleteE(String n) {
+    public static void deleteE(String n) throws IOException {
     	informations.remove(employees.indexOf(n));
     	employees.remove(employees.indexOf(n));
-    	System.out.println(n + " removed from the list of employees\n");	
+    	System.out.println(n + " removed from the list of employees\n");
+    	managerActions();
     }
-    public static void updateE(String n, String nR) {
+    public static void updateE(String n, String nR) throws IOException {
     	employees.set(employees.indexOf(n), nR);
-    	System.out.println(n + " replaced by " + nR + "\n");	
+    	System.out.println(n + " replaced by " + nR + "\n");
+    	managerActions();
     }
     public static void viewE() throws IOException {
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\employee.txt");
@@ -90,7 +95,6 @@ public class employee {
 				s = 0;
 			}
 			}
-			
 		}
     	int j = 0;
     	System.out.println("List of employees:");
@@ -102,6 +106,7 @@ public class employee {
     		}
     	}
     	System.out.println();
+    	managerActions();
     }
     public static void searchE(String n) throws IOException {
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\employee.txt");
@@ -125,5 +130,6 @@ public class employee {
     	}else {
     		System.out.println("We don't have this employee in list of employees\n");
     	}
+    	managerActions();
     }
  }
