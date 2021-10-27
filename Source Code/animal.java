@@ -20,21 +20,22 @@ public class animal {
 	static String chooseA = "";
 	static String informationA = "";
 	public static void userActions() throws IOException {
-    	System.out.println("What you want to do with animals:\n* view - show list of animals\n* search - to find a specfic animal");
+    	System.out.println("What you want to do with animals:\n* view - show list of animals\n* search - to find a specfic animal\n* back - back to list of actions");
     	String chooseA = s.nextLine().toLowerCase();
     	if(chooseA.equals("view")) {
-    		viewA();
+    		viewA("u");
     	}else if(chooseA.equals("search")) {
     		System.out.print("Please enter name of the animal to find it: ");
     		name = s.nextLine().toLowerCase();
-    		searchA(name);
+    		searchA(name, "u");
     	}else {
     		System.out.println("We don't have this action in list of actions");
+    		userActions();
     	}
     }
 	public static void managerActions() throws IOException {
 		FileWriter fw = new FileWriter("animal.txt", true);
-    	System.out.println("What you want to do with animals:\n* add - add an animal to list of animals\n* delete - remove an animal to list of animals\n* update  - replace an animal with another animal in list of animals\n* view - show list of animals\n* search - to find a specfic animal");
+    	System.out.println("What you want to do with animals:\n* add - add an animal to list of animals\n* delete - remove an animal to list of animals\n* update  - replace an animal with another animal in list of animals\n* view - show list of animals\n* search - to find a specfic animal\n* back - back to list of actions");
     	String chooseA = s.nextLine().toLowerCase();
     	if(chooseA.equals("add")) {
     		System.out.print("Please enter name of the animal: ");
@@ -59,13 +60,16 @@ public class animal {
     		nameR = s.nextLine().toLowerCase();
     		updateA(name, nameR);
     	}else if(chooseA.equals("view")) {
-    		viewA();
+    		viewA("m");
     	}else if(chooseA.equals("search")) {
     		System.out.print("Please enter name of the animal to find it: ");
     		name = s.nextLine().toLowerCase();
-    		searchA(name);
+    		searchA(name, "m");
+    	}else if(chooseA.equals("back")) {
+    		
     	}else {
     		System.out.println("We don't have this action in list of actions\n");
+    		managerActions();
     	}
     	fw.close();
     }
@@ -87,7 +91,7 @@ public class animal {
     	animals.set(animals.indexOf(n), nR);
     	System.out.println(n + " replace by " + nR + "\n");	
     }
-    public static void viewA() throws IOException {
+    public static void viewA(String c) throws IOException {
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\animal.txt");
 		BufferedReader br = new BufferedReader(new FileReader(f));
 		String st;
@@ -113,8 +117,13 @@ public class animal {
     		}
     	}
     	System.out.println();
+    	if(c.equals("u")) {
+    		userActions();
+    	}else {
+    		managerActions();
+    	}
     }
-    public static void searchA(String n) throws IOException {
+    public static void searchA(String n, String c) throws IOException {
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\animal.txt");
 		BufferedReader br = new BufferedReader(new FileReader(f));
 		String st;
@@ -135,5 +144,11 @@ public class animal {
     	}else {
     		System.out.println("We don't have this animal in list of animals\n");
     	}
+    	if(c.equals("u")) {
+    		userActions();
+    	}else {
+    		managerActions();
+    	}
+    	
     }
  }
