@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class supply {
+	static view v = new view();
 	static Scanner s = new Scanner(System.in);
 	static LinkedList<String> supplies = new LinkedList<>();
 	static List<String> quantityS = new ArrayList<>();
@@ -22,7 +23,7 @@ public class supply {
 	static int p = 0;
 	public static void managerActions() throws IOException {
 		FileWriter fw = new FileWriter("supply.txt", true);
-    	System.out.println("What you want to do with supplies:\n* add - add an supply to list of supplies\n* delete - remove an supply from list of supplies\n* update  - replace an supplies with another supplies in list of supplies\n* view - show list of supplies\n* search - to find a specific supply");
+    	System.out.println("What you want to do with supplies:\n* add - add an supply to list of supplies\n* delete - remove an supply to list of supplies\n* update  - replace an supplies with another supplies in list of supplies\n* view - show list of supplies\n* search - to find a specific supply\n* back - back to list of actions");
     	String chooseS = s.nextLine().toLowerCase();
     	if(chooseS.equals("add")) {
     		System.out.print("Please enter name of the supply: ");
@@ -57,12 +58,15 @@ public class supply {
     		System.out.print("Please enter name of the supply to find it: ");
     		name = s.nextLine().toLowerCase();
     		searchS(name);
+    	}else if(chooseS.equals("back")) {
+    		
     	}else {
     		System.out.println("We don't have this action in list of actions\n");
+    		managerActions();
     	}
     	fw.close();		
     }
-    public static void addS(String n, String q, int p) {
+    public static void addS(String n, String q, int p) throws IOException {
     	if(!supplies.contains(n)) {
     		supplies.add(n);
     		quantityS.add(q);
@@ -72,17 +76,20 @@ public class supply {
     	}else {
     		System.out.println("This name already exist in the list of supplies\n");
     	}
+    	managerActions();
     }
-    public static void deleteS(String n) {
+    public static void deleteS(String n) throws IOException {
     	quantityS.remove(supplies.indexOf(n));
     	ex.decreaseX(priceS.get(supplies.indexOf(n)));
     	priceS.remove(supplies.indexOf(n));
     	supplies.remove(supplies.indexOf(n));
-    	System.out.println(n + " removed from the list of supplies\n");	
+    	System.out.println(n + " removed from the list of supplies\n");
+    	managerActions();
     }
-    public static void updateS(String n, String nR) {
+    public static void updateS(String n, String nR) throws IOException {
     	supplies.set(supplies.indexOf(n), nR);
-    	System.out.println(nR + " replaced by " + n + "\n");	
+    	System.out.println(nR + " replaced by " + n + "\n");
+    	managerActions();
     }
     public static void viewS() throws IOException {
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\supply.txt");
@@ -111,6 +118,7 @@ public class supply {
     		System.out.println(j + "- " + quantityS.get(i) + " of " + supplies.get(i) + " by " + priceS.get(i) +"$");
     	}
     	System.out.println();
+    	managerActions();
     }
     public static void searchS(String n) throws IOException {
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\supply.txt");
@@ -136,5 +144,6 @@ public class supply {
     	}else {
     		System.out.println("We don't have this employee in list of employees\n");
     	}
+    	managerActions();
     }
  }
