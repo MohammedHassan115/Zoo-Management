@@ -73,7 +73,7 @@ public class animal {
     	}
     	fw.close();
     }
-    public static void addA(String n, String i) {
+    public static void addA(String n, String i) throws IOException {
     	if(!animals.contains(n)) {
     		animals.add(n);
     		informations.add(i);
@@ -81,15 +81,18 @@ public class animal {
     	}else {
     		System.out.println("This name already exist in the list of animals\n");
     	}
+    	managerActions();
     }
-    public static void deleteA(String n) {
+    public static void deleteA(String n) throws IOException {
     	informations.remove(animals.indexOf(n));
     	animals.remove(animals.indexOf(n));
-    	System.out.println(n + " removed from the list of animals\n");	
+    	System.out.println(n + " removed from the list of animals\n");
+    	managerActions();
     }
-    public static void updateA(String n, String nR) {
+    public static void updateA(String n, String nR) throws IOException {
     	animals.set(animals.indexOf(n), nR);
     	System.out.println(n + " replace by " + nR + "\n");	
+    	managerActions();
     }
     public static void viewA(String c) throws IOException {
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\animal.txt");
