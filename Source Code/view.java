@@ -19,7 +19,7 @@ public class view {
         System.out.println("--");
         System.out.println("options - display this options message");
         System.out.println("exit - exit the program\n");
-    }
+        }
 	public static void display_options2(){
         System.out.println("Options:");
         System.out.println("1- animal - show you list of sub actions with animals");
@@ -29,7 +29,7 @@ public class view {
         System.out.println("--");
         System.out.println("options - display this options message");
         System.out.println("exit - exit the program\n");
-    }
+        }
 	public static void PU() throws IOException{
 		Scanner s = new Scanner(System.in);
 		System.out.println("Please enter username and password:");
@@ -78,6 +78,9 @@ public class view {
         	case "exit":
                 System.exit(0);
             break;
+        	case "null":
+                System.exit(0);
+            break;
             default:
             	System.out.println("Please choose an action from list of actions\n");
         	}
@@ -109,5 +112,5 @@ public class view {
     }
     }
     		
-	}
+}
 }
