@@ -29,12 +29,12 @@
 * Github
 
 ## Team Members
-* Yahya Mewan Hassan
-Team Advisor& programmer.
-* Majeed Omer Majeed
+* Yahya Mewan Hassan: 
+Team Advisor & programmer.
+* Majeed Omer Majeed: 
 Developer and programmer.
-* Mohammed Hassan Rasul
-Team Advisor&Supervisor.
+* Mohammed Hassan Rasul: 
+Team Advisor & Supervisor.
 
 
 
