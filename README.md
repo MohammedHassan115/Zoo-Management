@@ -44,7 +44,7 @@ Developer and programmer.
 Team Advisor & Supervisor.
 
 
-##Deadline
+## Deadline
 * This project needs to finish over the course of two and a half months, with new requests added every week by the instructor(L.polla Fattah).
 
 
