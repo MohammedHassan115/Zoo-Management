@@ -7,31 +7,8 @@ import java.util.Scanner;
 public class view {
 	static String username = "";
 	static String password = "";
-	public static void display_options1(){
-        System.out.println("Options:");
-        System.out.println("1- animal - show you list of sub actions with animals");
-        System.out.println("2- employee - show you list of sub actions with employees");
-        System.out.println("3- supply - show you list of sub actions with supplies");
-        System.out.println("4- income - show you list of sub actions with income");
-        System.out.println("4- expenditure - show you list of sub actions with expenditure");
-        System.out.println("5- ticket - show list of sub actions with tickets");
-        System.out.println("6- back - back to username and password place");
-
-        System.out.println("--");
-        System.out.println("options - display this options message");
-        System.out.println("exit - exit the program\n");
-    }
-	public static void display_options2(){
-        System.out.println("Options:");
-        System.out.println("1- animal - show you list of sub actions with animals");
-        System.out.println("2- ticket - show list of sub actions with tickets");
-        System.out.println("3- back - back to username and password place");
-
-        System.out.println("--");
-        System.out.println("options - display this options message");
-        System.out.println("exit - exit the program\n");
-    }
-	public static void PU() throws IOException{
+	
+	public view() throws IOException{
 		Scanner s = new Scanner(System.in);
 		System.out.println("Please enter username and password:");
     	System.out.print("Username: ");
@@ -58,7 +35,6 @@ public class view {
         	switch(actions){
         	case "animal":
                 a.managerActions();
-                
             break;
         	case "employee":
                 e.managerActions();
@@ -76,7 +52,7 @@ public class view {
                 t.managerActions();
             break;
         	case "back":
-                PU();
+                new view();
             break;
         	case "exit":
                 System.exit(0);
@@ -101,7 +77,7 @@ public class view {
             t.userActions();
             break;
             case "back":
-                PU();
+                new view();
             break;
             case "exit":
                 System.exit(0);
@@ -113,4 +89,28 @@ public class view {
     }
     		
 	}
+	public static void display_options1(){
+        System.out.println("Options:");
+        System.out.println("1- animal - show you list of sub actions with animals");
+        System.out.println("2- employee - show you list of sub actions with employees");
+        System.out.println("3- supply - show you list of sub actions with supplies");
+        System.out.println("4- income - show you list of sub actions with income");
+        System.out.println("4- expenditure - show you list of sub actions with expenditure");
+        System.out.println("5- ticket - show list of sub actions with tickets");
+        System.out.println("6- back - back to username and password place");
+
+        System.out.println("--");
+        System.out.println("options - display this options message");
+        System.out.println("exit - exit the program\n");
+    }
+	public static void display_options2(){
+        System.out.println("Options:");
+        System.out.println("1- animal - show you list of sub actions with animals");
+        System.out.println("2- ticket - show list of sub actions with tickets");
+        System.out.println("3- back - back to username and password place");
+
+        System.out.println("--");
+        System.out.println("options - display this options message");
+        System.out.println("exit - exit the program\n");
+    }
 }
