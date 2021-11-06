@@ -72,6 +72,7 @@ public class supplyModel {
     	supply.managerActions();
     }
     public static void viewS() throws IOException {
+    	FileWriter fw = new FileWriter("supply.txt", true);
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\supply.txt");
 		BufferedReader br = new BufferedReader(new FileReader(f));
 		String st;
@@ -101,6 +102,7 @@ public class supplyModel {
     	supply.managerActions();
     }
     public static void searchS() throws IOException {
+    	FileWriter fw = new FileWriter("supply.txt", true);
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\supply.txt");
 		BufferedReader br = new BufferedReader(new FileReader(f));
 		System.out.print("Please enter name of the supply to find it: ");
