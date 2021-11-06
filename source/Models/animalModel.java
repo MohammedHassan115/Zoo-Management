@@ -20,15 +20,14 @@ public class animalModel {
 	
 	
 	public static void addA() throws IOException {
-    	FileWriter fw = new FileWriter("animal.txt", true);
-    		System.out.print("Please enter name of the animal: ");
-    		animal.setNameA(s.nextLine().toLowerCase());
-    		nameA = Optional.ofNullable(animal.getNameA()).orElse("unknown animal");
-    		System.out.print("And enter information about the animal: ");
-    		animal.setInformationA(s.nextLine().toLowerCase());
-    		infoA = Optional.ofNullable(animal.getInformationA()).orElse("no information");
-    		System.out.println(nameA + " " + infoA);
-    		if(!animals.contains(nameA)) {
+		FileWriter fw = new FileWriter("animal.txt", true);
+    	System.out.print("Please enter name of the animal: ");
+		animal.setNameA(s.nextLine().toLowerCase());
+		nameA = Optional.ofNullable(animal.getNameA()).orElse("unknown animal");
+		System.out.print("And enter information about the animal: ");
+		animal.setInformationA(s.nextLine().toLowerCase());
+		infoA = Optional.ofNullable(animal.getInformationA()).orElse("unknown information");
+    	if(!animals.contains(nameA)) {
     		animals.add(nameA);
     		informations.add(infoA);
     		System.out.println(nameA + " added to the list of animals\n");
@@ -39,12 +38,12 @@ public class animalModel {
     			fw.write(infoA.charAt(i));
     		fw.write("\n\n");
     	}else {
-    		System.out.println("This name already exist in the list of animals\n");
+    		System.out.println("This name already exist in the list of animals");
     	}
     	fw.close();
     	animal.managerActions();
     }
-    public static void deleteA() throws IOException {
+	public static void deleteA() throws IOException {
     	System.out.print("Please enter name of the animal: ");
 		nameA = s.nextLine().toLowerCase();
     	informations.remove(animals.indexOf(nameA));
@@ -62,6 +61,7 @@ public class animalModel {
     	animal.managerActions();
     }
     public static void viewA(String c) throws IOException {
+    	FileWriter fw = new FileWriter("animal.txt", true);
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\animal.txt");
 		BufferedReader br = new BufferedReader(new FileReader(f));
 		String st;
@@ -94,6 +94,7 @@ public class animalModel {
     	}
     }
     public static void searchA(String c) throws IOException {
+    	FileWriter fw = new FileWriter("animal.txt", true);
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\animal.txt");
 		BufferedReader br = new BufferedReader(new FileReader(f));
 		System.out.print("Please enter name of the animal to find it: ");
