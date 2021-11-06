@@ -60,6 +60,7 @@ public class employeeModel {
     	employee.managerActions();
     }
     public static void viewE() throws IOException {
+    	FileWriter fw = new FileWriter("employee.txt", true);
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\employee.txt");
 		BufferedReader br = new BufferedReader(new FileReader(f));
 		String st;
@@ -88,6 +89,7 @@ public class employeeModel {
     	employee.managerActions();
     }
     public static void searchE() throws IOException {
+    	FileWriter fw = new FileWriter("employee.txt", true);
     	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\employee.txt");
 		BufferedReader br = new BufferedReader(new FileReader(f));
 		System.out.print("Please enter name of the employee to find information about it: ");
