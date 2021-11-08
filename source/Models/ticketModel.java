@@ -10,7 +10,7 @@ public class ticketModel {
 	static ticket t = new ticket();
 	
 	public static void showT(String c) {
-		System.out.println("We have two tickets:\n* Normal ticket: the Normal one is 10$\n* VIP ticket: the VIP one is 30$\n");
+		System.out.println("We have two tickets:\n* Normal: the Normal one is 10$\n* VIP: the VIP one is 30$\n");
 		if(c.equals("u")) {
 			ticket.userActions();
 		}else {
