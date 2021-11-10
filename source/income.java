@@ -11,7 +11,7 @@ public class income {
     	if(chooseI.equals("update")) {
     		System.out.print("Please enter the new income: ");
     		int p = s.nextInt();
-    		incomeModel.updateI(p);
+    		incomeModel.updateI(p, "i");
     	} else if(chooseI.equals("clear")) {
     		incomeModel.clearI();
     	}else if(chooseI.equals("view")) {
