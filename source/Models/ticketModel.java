@@ -31,7 +31,7 @@ public class ticketModel {
 		ticketsoldA = ticketsoldV + ticketsoldN;
     	if((ticket.equals("vip") && priceT>=30) || (ticket.equals("normal") && priceT>=10)) {
     		System.out.println("You successfully buy " + ticket + " ticket by " + priceT + "$\n");
-    		incomeModel.updateI(priceT);
+    		incomeModel.updateI(priceT, "t");
     	}
     	else {
     		System.out.println("Please choose one of the ticket and give enough money\n");
