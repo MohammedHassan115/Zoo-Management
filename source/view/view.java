@@ -48,7 +48,7 @@ public class view {
                 ticket.managerActions();
             break;
         	case "server":
-                EchoClient.client();
+                new client();
             break;
         	case "back":
                 new view();
