@@ -38,7 +38,7 @@ class client {
 				out.flush();
 
 				// displaying server reply
-				System.out.println("Server replied "
+				System.out.println("Server replied: "
 								+ in.readLine());
 			}
 			
