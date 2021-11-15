@@ -116,12 +116,3 @@ class server {
 		}
 	}
 }
-
-/*FileWriter fw = new FileWriter(line + ".txt", true);	
-			    	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\" + line + ".txt");
-					BufferedReader br = new BufferedReader(new FileReader(f));
-					String st;
-					String ff = "";
-					while((st = br.readLine()) != null){
-						ff += st;
-					}*/
