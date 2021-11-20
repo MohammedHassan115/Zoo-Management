@@ -87,11 +87,8 @@ public class animalModel {
             }
         }
         System.out.println();
-        if(c.equals("u")) {
-            animal.userActions();
-        }else {
-            animal.managerActions();
-        }
+        if(c.equals("u")) animal.userActions();
+        else animal.managerActions();
     }
     public static void searchA(String c) throws IOException {
         FileWriter fw = new FileWriter("animal.txt", true);
@@ -112,16 +109,8 @@ public class animalModel {
                 }
             }
         }
-        if(animals.contains(nameA)) {
-            System.out.println(animals.get(animals.indexOf(nameA)) + " " +informations.get(animals.indexOf(nameA)));
-        }else {
-            System.out.println("We don't have this animal in list of animals\n");
-        }
-        if(c.equals("u")) {
-            animal.userActions();
-        }else {
-            animal.managerActions();
-        }
-
+        System.out.println(animals.contains(nameA) ? animals.get(animals.indexOf(nameA)) + " " + informations.get(animals.indexOf(nameA)) : "We don't have this animal in list of animals\n");
+        if(c.equals("u")) animal.userActions();
+        else animal.managerActions();
     }
 }
