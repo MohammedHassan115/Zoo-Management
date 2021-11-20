@@ -2,6 +2,7 @@ package m;
 
 import java.io.IOException;
 import java.util.Scanner;
+
 public class expenditure {
     static Scanner s = new Scanner(System.in);
 
