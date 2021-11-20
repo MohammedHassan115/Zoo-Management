@@ -108,11 +108,7 @@ public class employeeModel {
             }
 
         }
-        if(employees.contains(nameE)) {
-            System.out.println(employees.get(employees.indexOf(nameE)) + " " + informations.get(employees.indexOf(nameE)));
-        }else {
-            System.out.println("We don't have this employee in list of employees\n");
-        }
+        System.out.println(employees.contains(nameE) ? employees.get(employees.indexOf(nameE)) + " " + informations.get(employees.indexOf(nameE)) : "We don't have this employee in list of employees\n");
         employee.managerActions();
     }
 }
