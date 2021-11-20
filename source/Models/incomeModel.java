@@ -8,10 +8,8 @@ public class incomeModel {
     static int price = 0;
     public static void updateI(int p, String w) throws IOException {
         price += p;
-        if(w.equals("t"))
-            ticket.userActions();
-        else
-            income.managerActions();
+        if(w.equals("t")) ticket.userActions();
+        else income.managerActions();
     }
     public static void clearI() throws IOException {
         price = 0;
