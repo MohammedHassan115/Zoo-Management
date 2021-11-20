@@ -11,10 +11,8 @@ public class expenditureModel {
         expenditure.managerActions();
     }
     public static void decreaseX(int p) throws IOException {
-        if(price1!=0)
-            price1 -= p;
-        else
-            System.out.println("Your expenditure is 0$\n");
+        if(price1!=0) price1 -= p;
+        else System.out.println("Your expenditure is 0$\n");
         expenditure.managerActions();
     }
     public static void clearX() throws IOException {
