@@ -11,7 +11,7 @@ class server {
 
         try {
 
-            // server is listening on port 1234
+            // server is listening on port 6534
             server = new ServerSocket(6534);
             server.setReuseAddress(true);
 
