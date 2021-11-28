@@ -28,7 +28,6 @@ public class supplyModel {
 	static Connection con = null;
 	
 	public static void addS() throws IOException, SQLException {
-		//FileWriter fw = new FileWriter("supply.txt", true);
     	System.out.print("Please enter name of the supply: ");
 		supply.setNameS(s.nextLine().toLowerCase());
 		nameS = Optional.ofNullable(supply.getNameS()).orElse("unknown supply");
@@ -38,19 +37,12 @@ public class supplyModel {
 		System.out.print("And enter price of the supply: ");
 		supply.setPriceS(s.nextInt());
 		price = Optional.ofNullable(supply.getPriceS()).orElse(0);
-    	if(!supplies.contains(nameS)) {
     		supplies.add(nameS);
     		quantityS.add(quantity);
     		priceS.add(price);
-    		/*for(int i=0; i<nameS.length(); i++)
-    			fw.write(nameS.charAt(i));
-    		fw.write("\n");
-    		for(int i=0; i<infoS.length(); i++)
-    			fw.write(infoS.charAt(i));
-    		fw.write("\n\n");*/
     		try {
     			con = DriverManager.getConnection(url, uname, password);
-    			query = "insert into supply (names, quantities, prices) values (?, ?)";
+    			query = "insert into supplies (names, quantities, prices) values (?, ?, ?)";
     			PreparedStatement Pstatement = con.prepareStatement(query);
     			Pstatement.setString(1, nameS);
     			Pstatement.setString(2, quantity);
@@ -58,15 +50,11 @@ public class supplyModel {
     			Pstatement.executeUpdate();
     			Pstatement.close();
         		con.close();
+        		System.out.println(nameS + " added to the list of supplies\n");
     		}catch(SQLException e) {
     			e.printStackTrace();
     		}
-    		System.out.println(nameS + " added to the list of supplies\n");
-    	}else {
-    		System.out.println("This name already exist in the list of supplies\n");
-    	}
     	expenditureModel.increaseX(price);
-    	//fw.close();
     	supply.managerActions();
     }
 	public static void deleteS() throws IOException, SQLException {
@@ -79,16 +67,16 @@ public class supplyModel {
 		}
     	try {
 			con = DriverManager.getConnection(url, uname, password);
-			query = "DELETE FROM supply WHERE names=?";
+			query = "DELETE FROM supplies WHERE names=?";
 			PreparedStatement statement = con.prepareStatement(query);
 			statement.setString(1, nameS);
 			statement.executeUpdate();
 			statement.close();
 			con.close();
+			System.out.println(nameS + " removed from the list of supplies\n");
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-    	System.out.println(nameS + " removed from the list of supplies\n");
     	supply.managerActions();
     }
     public static void updateS() throws IOException, SQLException {
@@ -100,21 +88,21 @@ public class supplyModel {
     	supplies.set(supplies.indexOf(nameS), nameR);
     	try {
 			con = DriverManager.getConnection(url, uname, password);
-			query = "UPDATE supply SET names=? WHERE names=?";
+			query = "UPDATE supplies SET names=? WHERE names=?";
 			PreparedStatement statement = con.prepareStatement(query);
 			statement.setString(1, nameR);
 			statement.setString(2, nameS);
 			statement.executeUpdate();
 			statement.close();
 			con.close();
+			System.out.println(nameS + " replace by " + nameR + "\n");
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}
-    	System.out.println(nameS + " replace by " + nameR + "\n");	
+		}	
     	supply.managerActions();
     }
     public static void viewS() throws IOException, SQLException {
-    	query = "select * from supply";
+    	query = "select * from supplies";
 		try {
 			con = DriverManager.getConnection(url, uname, password);
 			Statement statement = con.createStatement();
@@ -130,58 +118,15 @@ public class supplyModel {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-    	/*FileWriter fw = new FileWriter("employee.txt", true);
-    	File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\employee.txt");
-		BufferedReader br = new BufferedReader(new FileReader(f));
-		String st;
-		int s = 0;
-		while((st = br.readLine()) != null){
-			if(!st.equals("")) {
-			if(s==0) {
-				employees.add(st);
-				s = 1;
-			}else {
-				informations.add(st);
-				s = 0;
-			}
-			}
-		}
-    	int j = 0;
-    	System.out.println("List of employees:");
-    	for(int i=0; i<employees.size(); i++) {
-    		if(!employees.get(i).equals("")) {
-    			j = i;
-    		    j++;
-    		    System.out.println(j + "- " + employees.get(i) + " " + informations.get(i));
-    		}
-    	}*/
     	System.out.println();
     	supply.managerActions();
     }
     public static void searchS() throws IOException, SQLException {
-    	//FileWriter fw = new FileWriter("employee.txt", true);
-    	//File f = new File("C:\\Users\\PC-BALEN\\eclipse-workspace\\mom\\employee.txt");
-		//BufferedReader br = new BufferedReader(new FileReader(f));
-		/*String st;
-		int s = 0;
-		while((st = br.readLine()) != null){
-			if(!st.equals("")) {
-			if(s==0) {
-				employees.add(st);
-				s = 1;
-			}else {
-				informations.add(st);
-				s = 0;
-			}
-			}
-		}*/
-		//System.out.print("Please enter name of the supply: ");
-		//nameS = s.nextLine();
     	System.out.print("Please enter name of the supply to find it: ");
 		nameS = s.nextLine();
 		try {
 			con = DriverManager.getConnection(url, uname, password);
-			query = new String("SELECT * FROM supply where names=?");
+			query = new String("SELECT * FROM supplies where names=?");
 		    PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, nameS);
 			ResultSet result = ps.executeQuery();
