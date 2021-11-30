@@ -11,7 +11,7 @@ class client {
 	public client() {
 		// establish a connection by providing host and port
 		// number
-		try (Socket socket = new Socket("localhost", 1234)) {
+		try (Socket socket = new Socket("localhost", 3894)) {
 					
 			// writing to server
 		PrintWriter out = new PrintWriter(
@@ -32,7 +32,17 @@ class client {
 		if(line.equals("animals") || line.equals("employees") || line.equals("supplies")) {
 			out.println(line);
 			out.flush();
-			System.out.println("Server replied: "+ in.readLine() + "\n");
+			String come = in.readLine();
+			String get = "";
+			for(int i=0; i<come.length(); i++) {
+				if(come.charAt(i) == ',' || come.charAt(i) == ']') {
+					System.out.println(get);
+					get = "";
+				}else {
+					if(come.charAt(i) != '[')
+					get += come.charAt(i);
+				}
+			}
 		}else {
 			System.out.println("Please select one of the choose from the list\n");
 		}
